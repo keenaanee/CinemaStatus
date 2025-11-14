@@ -79,12 +79,12 @@ You can use an `.env` file or pass these directly as `-e` flags.
 ### Build (optional, if you want your own image)
 
 ```bash
-docker build -t your-docker-user/cinemastatus-plex .
+docker build -t your-docker-user/cinemastatus .
 
 ### Run
 ```bash
 docker run -d \
-  --name cinemastatus-plex \
+  --name cinemastatus \
   -e DISCORD_TOKEN="your-discord-bot-token" \
   -e PLEX_URL="http://192.168.x.x:32400" \
   -e PLEX_TOKEN="your-plex-token" \
@@ -99,8 +99,9 @@ docker run -d \
 
 ### Logs
 ```bash
-docker logs -f kee-cinema-bot
+docker logs -f cinemastatus
 ```
+
 
 
 
