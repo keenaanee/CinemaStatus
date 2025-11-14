@@ -3,18 +3,12 @@
 # Plex Discord Rich Presence Bot
 
 Small Discord bot that sets its own Rich Presence based on what a Plex user is
-currently watching. Designed for setups where you want a Discord account to
-show the movie or TV episode playing on your Plex server (e.g. a “KeeCinema”-style
-cinema account).
-
-There is also a companion bot/config (CinemaStatus) that renames a Discord
-voice channel (your “cinema” channel) based on the same Plex activity.
+currently watching and renames a Discord voice channel (your “cinema” channel)
+based on that same Plex activity. Designed for setups where you want a Discord
+account to show the movie or TV episode playing on your Plex server
+(e.g. a “KeeCinema”-style cinema account).
 
 ## Pull from DockerHub
-
-Rich Presence only (this repo):
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/keenaanee/discord-plex-drpp)](https://hub.docker.com/r/keenaanee/discord-plex-drpp)
 
 Rich Presence + cinema channel rename (CinemaStatus):
 
@@ -22,7 +16,7 @@ Rich Presence + cinema channel rename (CinemaStatus):
 
 ## What it does
 
-### Mode 1: Plex → Discord Rich Presence (this bot)
+### Plex → Discord Rich Presence
 
 - Connects to your Plex server via URL and token.
 - Watches active Plex sessions and optionally filters to a single Plex username.
@@ -33,45 +27,28 @@ Rich Presence + cinema channel rename (CinemaStatus):
 - Optionally includes timestamps so Discord shows the remaining time.
 - Runs as a simple, lightweight polling bot inside Docker.
 
-### Mode 2: Plex → Rich Presence + cinema channel (CinemaStatus)
+### Plex → Rich Presence + cinema channel
 
-Using the CinemaStatus image/config, you can also:
-
-- Rename a chosen Discord voice channel (your “cinema” channel).
-- Use the same Plex data as Rich Presence (movie or episode title).
-- Apply a configurable base name (for example `🎬 Cinema`) and append the current title.
-- Use a configurable cooldown between renames to avoid API spam.
-
-CinemaStatus can be used on its own, or alongside this bot, depending on how
-you want to structure your setup.
+- Renames a chosen Discord voice channel (your “cinema” channel).
+- Uses the same Plex data as Rich Presence (movie or episode title).
+- Applies a configurable base name (for example `🎬 Cinema`) and appends the current title.
+- Uses a configurable cooldown between renames to avoid API spam.
 
 ## Requirements
 
-Common requirements:
-
 - A Plex server you can reach from the container (URL + token).
 - Docker (Unraid, Linux, etc.) or plain Python if you prefer running without Docker.
-
-For this Rich Presence bot (discord-plex-drpp):
-
 - A Discord bot with:
-  - No special intents required (it only updates its own presence).
-
-For CinemaStatus (optional cinema channel rename):
-
-- A Discord bot with:
-  - Permission to edit the chosen voice channel’s name in the guild.
+  - Permission to edit the chosen voice channel’s name in the Discord server.
 
 ## Configuration (environment variables)
 
-### Shared Plex / user settings
-
-These are common between the two bots:
+All configuration is done via environment variables:
 
 - `PLEX_URL` (required)  
   Your Plex server URL, including port.  
   Example: `http://192.168.x.x:32400`
-
+  
 - `PLEX_TOKEN` (required)  
   Your Plex API token.
 
@@ -79,18 +56,8 @@ These are common between the two bots:
   Plex username to track. If set, the bot only uses sessions from this user.  
   If left empty, it will fall back to “any active session”.
 
-### This bot (discord-plex-drpp – Rich Presence only)
-
-- `BOT_TOKEN` (required)  
-  Discord bot token for this Rich Presence bot.
-
-### CinemaStatus (Rich Presence + cinema channel)
-
-CinemaStatus uses a very similar configuration, plus some extra variables for
-the voice channel rename:
-
 - `DISCORD_TOKEN` (required)  
-  Discord bot token for CinemaStatus.
+  Discord bot token.
 
 - `CINEMA_CHANNEL_ID` (required)  
   Discord voice channel ID to rename (numeric ID).
@@ -105,14 +72,14 @@ the voice channel rename:
 - `POLL_INTERVAL` (optional, default `30`)  
   Seconds between Plex polls.
 
-You can use an `.env` file or pass these directly as `-e` flags for either bot.
+You can use an `.env` file or pass these directly as `-e` flags.
 
-## Running this bot with Docker (discord-plex-drpp)
+## Running this bot with Docker
 
-### Build
+### Build (optional, if you want your own image)
 
 ```bash
-docker build -t your-docker-user/plex-discord-bot .
+docker build -t your-docker-user/cinemastatus-plex .
 
 ### Run
 ```bash
@@ -135,6 +102,7 @@ docker run -d \
 docker logs -f kee-cinema-bot
 ```
 
+::contentReference[oaicite:0]{index=0}
 
 
 
