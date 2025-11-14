@@ -7,7 +7,7 @@ screen-shares Plex into a voice channel.
 
 ## Pull from DockerHub
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/keenaanee/cinema-status)](https://hub.docker.com/r/keenaanee/cinema-status)
+[![Docker Pulls](https://img.shields.io/docker/pulls/keenaanee/cinemastatus)](https://hub.docker.com/r/keenaanee/cinemastatus)
 
 ## What it does
 
@@ -79,5 +79,6 @@ docker logs -f kee-cinema-bot
 
 
 ```
+
 
 
