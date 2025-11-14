@@ -1,81 +1,48 @@
 <?xml version="1.0"?>
-<Container>
+<Container version="2">
   <Name>CinemaStatus</Name>
   <Repository>keenaanee/cinemastatus:latest</Repository>
   <Registry>https://hub.docker.com/r/keenaanee/cinemastatus</Registry>
   <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
   <Privileged>false</Privileged>
-
   <Support>https://github.com/keenaanee/CinemaStatus</Support>
   <Project>https://github.com/keenaanee/CinemaStatus</Project>
-  <Icon>https://raw.githubusercontent.com/keenaanee/CinemaStatus/1.3/icon.png</Icon>
-
-  <Overview>
-    <![CDATA[
-Discord bot that renames a voice channel based on a user's Rich Presence
-(e.g. Plex Rich Presence). Designed for "cinema" setups where one account
-screen-shares Plex into a voice channel.
-
-Configuration is via environment variables:
-- DISCORD_TOKEN: your bot token
-- TARGET_USER_ID: Discord user ID to watch
-- CINEMA_CHANNEL_ID: voice channel ID to rename
-- BASE_CHANNEL_NAME: base name of the channel
-- RENAME_COOLDOWN: seconds between renames
-    ]]>
+  <Overview>&#13;
+    &#13;
+Discord bot that polls Plex for the currently playing item, sets its own Discord Rich Presence,&#13;
+and renames a cinema voice channel based on that media.&#13;
+&#13;
+Configuration is via environment variables:&#13;
+- DISCORD_TOKEN: your bot token&#13;
+- PLEX_URL: Plex server URL (e.g. http://192.168.1.10:32400)&#13;
+- PLEX_TOKEN: Plex API token&#13;
+- TARGET_USER: Plex username to track (optional, leave blank to use first active session)&#13;
+- CINEMA_CHANNEL_ID: voice channel ID to rename&#13;
+- BASE_CHANNEL_NAME: base name of the channel&#13;
+- RENAME_COOLDOWN: seconds between renames&#13;
+- POLL_INTERVAL: seconds between Plex polls (default 30)&#13;
+    &#13;
   </Overview>
-
   <Category>MediaServer: Tools:Other</Category>
-
-  <Environment>
-    <Variable>
-      <Name>DISCORD_TOKEN</Name>
-      <Value>YOUR_BOT_TOKEN_HERE</Value>
-      <Description>Discord bot token</Description>
-      <Mode>rw</Mode>
-      <Required>true</Required>
-      <Mask>true</Mask>
-    </Variable>
-    <Variable>
-      <Name>TARGET_USER_ID</Name>
-      <Value>YOUR_TARGET_USER_ID_HERE</Value>
-      <Description>Discord user ID to watch</Description>
-      <Mode>rw</Mode>
-      <Required>true</Required>
-      <Mask>false</Mask>
-    </Variable>
-    <Variable>
-      <Name>CINEMA_CHANNEL_ID</Name>
-      <Value>YOUR_VOICE_CHANNEL_ID_HERE</Value>
-      <Description>Voice channel ID to rename</Description>
-      <Mode>rw</Mode>
-      <Required>true</Required>
-      <Mask>false</Mask>
-    </Variable>
-    <Variable>
-      <Name>BASE_CHANNEL_NAME</Name>
-      <Value>🎬 Cinema</Value>
-      <Description>Base channel name; bot appends movie title</Description>
-      <Mode>rw</Mode>
-      <Required>false</Required>
-      <Mask>false</Mask>
-    </Variable>
-    <Variable>
-      <Name>RENAME_COOLDOWN</Name>
-      <Value>300</Value>
-      <Description>Seconds between channel renames (default 300 = 5 minutes)</Description>
-      <Mode>rw</Mode>
-      <Required>false</Required>
-      <Mask>false</Mask>
-    </Variable>
-  </Environment>
-
-  <Data>
-    <!-- No volume mappings needed; stateless bot -->
-  </Data>
-
-  <WebUI></WebUI>
-  <ExtraParams></ExtraParams>
-  <PostArgs></PostArgs>
-  <CPUset></CPUset>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/keenaanee/CinemaStatus/1.3/icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1763131214</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Key 1" Target="DISCORD_TOKEN" Default="YOUR_BOT_TOKEN_HERE" Mode="" Description="Discord bot token" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Key 2" Target="PLEX_URL" Default="http://127.0.0.1:32400" Mode="" Description="Plex server URL" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Key 3" Target="PLEX_TOKEN" Default="YOUR_PLEX_TOKEN_HERE" Mode="" Description="Plex API token" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Key 4" Target="TARGET_USER" Default="" Mode="" Description="Plex username to track (optional; blank = first active session)" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Key 5" Target="CINEMA_CHANNEL_ID" Default="YOUR_VOICE_CHANNEL_ID_HERE" Mode="" Description="Discord voice channel ID to rename" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Key 6" Target="BASE_CHANNEL_NAME" Default="&#x1F3AC; Cinema" Mode="" Description="Base channel name" Type="Variable" Display="always" Required="false" Mask="false">&#x1F3AC; Cinema</Config>
+  <Config Name="Key 7" Target="RENAME_COOLDOWN" Default="300" Mode="" Description="Seconds between channel renames" Type="Variable" Display="always" Required="false" Mask="false">300</Config>
+  <Config Name="Key 8" Target="POLL_INTERVAL" Default="30" Mode="" Description="Seconds between Plex polls" Type="Variable" Display="always" Required="false" Mask="false">30</Config>
+  <TailscaleStateDir/>
 </Container>
