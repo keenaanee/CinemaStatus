@@ -52,7 +52,7 @@ See `.env.example` for a sample.
 ### Build
 
 ```bash
-docker build -t kee-cinema-bot
+docker build -t kee-cinema-bot .
 ```
 
 ### Run
@@ -71,5 +71,6 @@ docker run -d \
 ### Logs
 ```bash
 docker logs -f kee-cinema-bot
+
 
 ```
