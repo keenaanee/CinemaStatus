@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<Container>
+  <Name>CinemaStatus</Name>
+  <Repository>keenaanee/cinemastatus:latest</Repository>
+  <Registry>https://hub.docker.com/r/keenaanee/cinemastatus</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+
+  <Support>https://github.com/keenaanee/CinemaStatus</Support>
+  <Project>https://github.com/keenaanee/CinemaStatus</Project>
+  <Icon>https://raw.githubusercontent.com/keenaanee/CinemaStatus/1.2/icon.png</Icon>
+
+  <Overview>
+    <![CDATA[
+Discord bot that renames a voice channel based on a user's Rich Presence
+(e.g. Plex Rich Presence). Designed for "cinema" setups where one account
+screen-shares Plex into a voice channel.
+
+Configuration is via environment variables:
+- DISCORD_TOKEN: your bot token
+- TARGET_USER_ID: Discord user ID to watch
+- CINEMA_CHANNEL_ID: voice channel ID to rename
+- BASE_CHANNEL_NAME: base name of the channel
+- RENAME_COOLDOWN: seconds between renames
+    ]]>
+  </Overview>
+
+  <Category>MediaServer: Tools:Other</Category>
+
+  <Environment>
+    <Variable>
+      <Name>DISCORD_TOKEN</Name>
+      <Value>YOUR_BOT_TOKEN_HERE</Value>
+      <Description>Discord bot token</Description>
+      <Mode>rw</Mode>
+      <Required>true</Required>
+      <Mask>true</Mask>
+    </Variable>
+    <Variable>
+      <Name>TARGET_USER_ID</Name>
+      <Value>YOUR_TARGET_USER_ID_HERE</Value>
+      <Description>Discord user ID to watch</Description>
+      <Mode>rw</Mode>
+      <Required>true</Required>
+      <Mask>false</Mask>
+    </Variable>
+    <Variable>
+      <Name>CINEMA_CHANNEL_ID</Name>
+      <Value>YOUR_VOICE_CHANNEL_ID_HERE</Value>
+      <Description>Voice channel ID to rename</Description>
+      <Mode>rw</Mode>
+      <Required>true</Required>
+      <Mask>false</Mask>
+    </Variable>
+    <Variable>
+      <Name>BASE_CHANNEL_NAME</Name>
+      <Value>🎬 Cinema</Value>
+      <Description>Base channel name; bot appends movie title</Description>
+      <Mode>rw</Mode>
+      <Required>false</Required>
+      <Mask>false</Mask>
+    </Variable>
+    <Variable>
+      <Name>RENAME_COOLDOWN</Name>
+      <Value>300</Value>
+      <Description>Seconds between channel renames (default 300 = 5 minutes)</Description>
+      <Mode>rw</Mode>
+      <Required>false</Required>
+      <Mask>false</Mask>
+    </Variable>
+  </Environment>
+
+  <Data>
+    <!-- No volume mappings needed; stateless bot -->
+  </Data>
+
+  <WebUI></WebUI>
+  <ExtraParams></ExtraParams>
+  <PostArgs></PostArgs>
+  <CPUset></CPUset>
+</Container>
