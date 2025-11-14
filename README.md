@@ -4,6 +4,10 @@ Small Discord bot that renames a voice channel based on a user's Rich Presence
 (e.g. Plex Rich Presence). Designed for "cinema" setups where one account
 screen-shares Plex into a voice channel.
 
+## Pull from DockerHub
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/keenaanee/cinema-status)](https://hub.docker.com/r/keenaanee/cinema-status)
+
 ## What it does
 
 - Watches a single Discord user (your cinema account).
@@ -74,3 +78,4 @@ docker logs -f kee-cinema-bot
 
 
 ```
+
