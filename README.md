@@ -1,3 +1,4 @@
+![2](https://repository-images.githubusercontent.com/1096099312/03ae624f-f171-4de1-8abf-0758b6865b4f)
 # Discord Cinema Status Bot
 
 Small Discord bot that renames a voice channel based on a user's Rich Presence
@@ -78,4 +79,5 @@ docker logs -f kee-cinema-bot
 
 
 ```
+
 
