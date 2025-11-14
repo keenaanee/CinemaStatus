@@ -102,7 +102,6 @@ docker run -d \
 docker logs -f kee-cinema-bot
 ```
 
-::contentReference[oaicite:0]{index=0}
 
 
 
